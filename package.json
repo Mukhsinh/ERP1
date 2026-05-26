@@ -5,6 +5,12 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "workspaces": [
+    "erp-akapro",
+    "backend",
+    "frontend",
+    "erp-akapro-client"
+  ],
   "scripts": {
     "build": "cd erp-akapro && npm install && npm run build",
     "dev": "cd erp-akapro && npm run dev",
@@ -38,17 +44,17 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.21.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "shadcn-ui": "^0.9.5",
     "tailwind-merge": "^3.6.0",
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
     "typeorm": "^1.0.0"
   },
   "devDependencies": {
@@ -61,6 +67,9 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.0",
     "@types/supertest": "^7.0.0",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "eslint": "^9.18.0",
     "eslint-config-next": "16.2.6",
     "eslint-config-prettier": "^10.0.1",
