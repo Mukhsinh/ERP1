@@ -1,27 +1,19 @@
 import { createBrowserClient } from '@supabase/ssr';
 
-// Helper to get environment variables safely
-const getEnv = (name: string) => {
-    const value = process.env[name];
-    // During build time on Vercel, if keys are missing, we return a dummy string
-    // that passes the library's internal validation but won't work for actual requests.
-    // This prevents the build from crashing during static generation.
-    return value || 'https://placeholder-url.supabase.co';
-};
+// Note: Next.js requires literal access to process.env.NEXT_PUBLIC_* for static replacement.
+// We cannot use dynamic property access like process.env[name].
 
-const getAnonKey = () => {
-    return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
-};
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder-url.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
 
 // Lazy initialization pattern
 let _supabase: ReturnType<typeof createBrowserClient> | null = null;
 
 export const getSupabase = () => {
+    // If we're still using placeholder values, check if the environment variables 
+    // are available (this shouldn't happen if they are correctly set in Vercel)
     if (!_supabase) {
-        _supabase = createBrowserClient(
-            getEnv('NEXT_PUBLIC_SUPABASE_URL'),
-            getAnonKey()
-        );
+        _supabase = createBrowserClient(supabaseUrl, supabaseAnonKey);
     }
     return _supabase;
 };
