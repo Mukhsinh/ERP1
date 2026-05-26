@@ -22,6 +22,7 @@ export default function LoginPage() {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log('Attempting login for:', email);
         setLoading(true);
         setError(null);
 
