@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "public": true,
+    "buildCommand": "cd erp-akapro && npm install && npm run build",
+    "installCommand": "cd erp-akapro && npm install",
+    "outputDirectory": "erp-akapro/.next",
+    "framework": "nextjs"
+}
